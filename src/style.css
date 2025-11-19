@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Print styles - prevent page breaks inside form fields */
+@media print {
+  /* Prevent page breaks inside form fields */
+  .m-3.px-3.py-2.border.border-black.rounded {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Alternative: add a print-specific class */
+  .print-no-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

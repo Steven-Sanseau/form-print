@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="m-3 px-3 py-2 border border-black rounded">
+  <div class="m-3 px-3 py-2 border border-black rounded print-no-break">
     <FieldHeader :field="field" />
     <template v-if="field.type === 'group'">
       <FormField
