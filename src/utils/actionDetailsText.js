@@ -1,3 +1,5 @@
+import { getTranslation } from "../i18n/index.js";
+
 const operatorByActionType = {
   subtract: "-",
   add: "+",
@@ -12,9 +14,9 @@ export default function actionDetailsText(actionType, details, fieldsByRef) {
         const { type, value } = details.to;
         switch (type) {
           case "thankyou":
-            return "Jump to Thank you"; // ToDo display which thank you screen
+            return getTranslation("logic.jumpToThankYou");
           case "field":
-            return `Jump to ${fieldsByRef[value].shortName}`;
+            return `${getTranslation("logic.jumpTo")} ${fieldsByRef[value].shortName}`;
         }
       }
       break;

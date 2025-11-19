@@ -1,3 +1,5 @@
+import { getTranslation } from "../i18n/index.js";
+
 const operatorByConditionOp = {
   is: "=",
   is_not: "≠",
@@ -32,7 +34,7 @@ export default function conditionText(
   level = 0
 ) {
   const { op, vars } = condition;
-  const startText = level === 0 ? "If " : "";
+  const startText = level === 0 ? `${getTranslation("logic.if")} ` : "";
   switch (op) {
     case "and":
     case "or":
@@ -40,17 +42,17 @@ export default function conditionText(
         startText +
         vars
           .map((item) => conditionText(item, fieldRef, fieldsByRef, level + 1))
-          .join(` ${op} `)
+          .join(` ${getTranslation(`logic.${op}`)} `)
       );
     case "always":
-      return "Always";
+      return getTranslation("logic.always");
     default: {
       const { field, variable, choice, constant } = parseConditionVars(vars);
       const fieldData = fieldsByRef[field];
       const targetText = variable
         ? `@${variable}`
         : field === fieldRef
-        ? "this"
+        ? getTranslation("logic.this")
         : fieldData.shortName;
       const operatorText = operatorByConditionOp[op];
       const valueText = choice
