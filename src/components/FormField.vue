@@ -8,10 +8,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-4 print-no-break">
+  <div class="rounded-lg border bg-card shadow-sm p-6 print-no-break">
     <FieldHeader :field="field" />
     <template v-if="field.type === 'group'">
-      <div class="mt-4 space-y-3">
+      <div class="mt-5 space-y-4">
         <FormField
           v-for="field of field.properties.fields"
           :key="field.ref"
@@ -19,8 +19,8 @@ defineProps({
         />
       </div>
     </template>
-    <div v-else class="grid grid-flow-col auto-cols-fr gap-4 mt-3">
-      <div class="space-y-2 empty:hidden">
+    <div v-else class="grid grid-flow-col auto-cols-fr gap-6 mt-4">
+      <div class="space-y-3 empty:hidden">
         <template v-if="field.properties.choices">
           <FieldChoice
             v-for="choice of field.properties.choices"
@@ -34,7 +34,7 @@ defineProps({
         </template>
       </div>
       <pre
-        class="text-xs text-muted-foreground overflow-x-auto print:whitespace-pre-wrap bg-muted p-3 rounded-md"
+        class="text-sm text-muted-foreground overflow-x-auto print:whitespace-pre-wrap bg-muted/50 p-4 rounded-md border"
         v-html="field.logic"
       />
     </div>

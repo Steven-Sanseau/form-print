@@ -13,20 +13,20 @@ const descriptionHTML = computed(() =>
 </script>
 
 <template>
-  <div class="flex items-start gap-3">
+  <div class="flex items-center gap-4">
     <a
       :name="field.ref"
       :href="`#${field.ref}`"
-      class="inline-flex items-center justify-center rounded-md border bg-background px-2 py-1 text-xs font-medium hover:bg-accent transition-colors"
+      class="inline-flex items-center justify-center rounded-md border bg-background px-3 py-2 text-sm font-semibold hover:bg-accent transition-colors shrink-0"
     >
       {{ field.shortName }}
     </a>
     <div class="flex-1">
-      <h3 class="font-semibold leading-tight">
+      <h3 class="text-lg font-semibold leading-snug">
         <span v-html="titleHTML" />
         <span v-if="required" class="text-destructive ml-1">*</span>
       </h3>
-      <p v-if="descriptionHTML" class="text-sm text-muted-foreground mt-1" v-html="descriptionHTML" />
+      <p v-if="descriptionHTML" class="text-base text-muted-foreground mt-2" v-html="descriptionHTML" />
     </div>
   </div>
 </template>
