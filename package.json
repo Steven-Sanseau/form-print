@@ -1,6 +1,7 @@
 {
   "name": "typeform-overview",
   "version": "0.0.0",
+  "homepage": "https://typeform-print.netlify.app",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
