@@ -6,6 +6,7 @@ import parseTypeformUrl from "./utils/parseTypeformUrl.js";
 import fetchTypeform from "./utils/fetchTypeform.js";
 import FormField from "./components/FormField.vue";
 import LanguageSwitcher from "./components/LanguageSwitcher.vue";
+import PrintButton from "./components/PrintButton.vue";
 import Button from "./components/ui/Button.vue";
 import Input from "./components/ui/Input.vue";
 import Card from "./components/ui/Card.vue";
@@ -208,5 +209,8 @@ async function loadFromUrl() {
         <FormField v-for="field of data.fields" :key="field.ref" :field="field" />
       </div>
     </main>
+
+    <!-- Print Button -->
+    <PrintButton />
   </div>
 </template>

@@ -43,22 +43,133 @@
   }
 }
 
-/* Print styles - prevent page breaks inside form fields */
+/* Print styles - ultra-compact for maximum content density */
 @media print {
-  /* Prevent page breaks inside form fields */
-  .m-3.px-3.py-2.border.rounded {
-    page-break-inside: avoid;
-    break-inside: avoid;
+  /* Minimal page margins */
+  @page {
+    margin: 0.3cm;
   }
 
-  /* Alternative: add a print-specific class */
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    @apply bg-white text-black;
+  }
+
+  body {
+    padding: 0.2cm !important;
+    font-size: 9pt;
+    line-height: 1.1;
+  }
+
+  /* Prevent page breaks inside form fields */
   .print-no-break {
     page-break-inside: avoid;
     break-inside: avoid;
   }
 
-  /* Reset background for print */
-  body {
-    @apply bg-white text-black;
+  /* Remove all container padding */
+  .container,
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Main title - compact */
+  h2.text-3xl {
+    font-size: 1.1rem !important;
+    margin: 0 0 0.2rem 0 !important;
+    padding: 0 !important;
+    line-height: 1.2;
+    page-break-after: avoid;
+  }
+
+  /* Space between fields - minimal */
+  .space-y-4 > * + * {
+    margin-top: 0.15rem !important;
+  }
+
+  /* Card padding - very compact */
+  .p-4 {
+    padding: 0.3rem !important;
+  }
+
+  .rounded-lg.border.bg-card {
+    margin-bottom: 0.15rem !important;
+  }
+
+  /* Field header gap - minimal */
+  .gap-3 {
+    gap: 0.2rem !important;
+  }
+
+  /* Field badge - tiny */
+  .px-2.py-1 {
+    padding: 0.1rem 0.25rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  /* Field title - compact */
+  h3.font-semibold {
+    font-size: 0.85rem !important;
+    line-height: 1.15;
+  }
+
+  /* Grid gap - minimal */
+  .gap-4 {
+    gap: 0.3rem !important;
+  }
+
+  .mt-3 {
+    margin-top: 0.2rem !important;
+  }
+
+  /* Choices gap - minimal */
+  .gap-2 {
+    gap: 0.15rem !important;
+  }
+
+  .space-y-2 > * + * {
+    margin-top: 0.1rem !important;
+  }
+
+  /* Choice badge - tiny */
+  .px-2.py-0\\.5 {
+    padding: 0.05rem 0.2rem !important;
+    font-size: 0.6rem !important;
+  }
+
+  /* Choice text - compact */
+  .text-sm {
+    font-size: 0.75rem !important;
+    line-height: 1.15;
+  }
+
+  /* Logic text - very compact */
+  .p-3 {
+    padding: 0.25rem !important;
+  }
+
+  .text-xs {
+    font-size: 0.6rem !important;
+    line-height: 1.15;
+  }
+
+  .text-muted-foreground {
+    color: #666 !important;
+  }
+
+  /* Hide shadows */
+  .shadow-sm,
+  .shadow-lg {
+    box-shadow: none !important;
+  }
+
+  /* Prevent orphans */
+  label,
+  h3 {
+    page-break-after: avoid;
   }
 }

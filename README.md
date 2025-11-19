@@ -73,6 +73,38 @@ npm run test:unit
 npm run lint
 ```
 
+## Printing to PDF
+
+The application is optimized for printing and PDF export. To get the best results:
+
+### Browser Print Settings
+
+1. **Chrome/Edge:**
+   - Open Print dialog (Ctrl/Cmd + P)
+   - Destination: "Save as PDF"
+   - **IMPORTANT:** Uncheck "Headers and footers" to remove date/URL
+   - Layout: Portrait
+   - Margins: Default or Minimum
+
+2. **Firefox:**
+   - Open Print dialog (Ctrl/Cmd + P)
+   - **IMPORTANT:** In "More settings", uncheck "Print headers and footers"
+   - Margins: Default or None
+
+3. **Safari:**
+   - Open Print dialog (Cmd + P)
+   - Click "Show Details"
+   - **Uncheck "Print headers and footers"** at the bottom
+
+### Print Optimizations
+
+The application automatically:
+- ✅ Hides the loader interface
+- ✅ Removes unnecessary spacing
+- ✅ Prevents question blocks from being split across pages
+- ✅ Optimizes margins for better content density
+- ✅ Removes box shadows and UI decorations
+
 ## Technical Details
 
 ### CORS and API Proxy
