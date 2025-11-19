@@ -86,86 +86,55 @@ async function loadFromUrl() {
 <template>
   <div class="min-h-screen bg-background">
     <!-- Header -->
-    <header class="print:hidden border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-        <h1 class="text-2xl font-bold tracking-tight">{{ t("app.title") }}</h1>
+    <header class="print:hidden border-b">
+      <div class="container mx-auto px-6 py-5 flex items-center justify-between">
+        <h1 class="text-3xl font-bold">{{ t("app.title") }}</h1>
         <LanguageSwitcher />
       </div>
     </header>
 
-    <main class="container mx-auto px-4 py-6 max-w-5xl">
-      <!-- Loader Card -->
-      <Card class="print:hidden mb-6 p-6">
-        <h2 class="text-lg font-semibold mb-4">{{ t("loader.title") }}</h2>
+    <main class="container mx-auto px-6 py-8 max-w-6xl">
+      <!-- Loader Section -->
+      <div class="print:hidden mb-8 p-8 rounded-lg border bg-card shadow-sm">
+        <h2 class="text-2xl font-semibold mb-6">{{ t("loader.title") }}</h2>
 
         <!-- Error Alert -->
-        <Alert v-if="errorMessage" variant="destructive" class="mb-4">
-          <div class="flex items-start gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="mt-0.5"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-            <span>{{ errorMessage }}</span>
-          </div>
-        </Alert>
+        <div
+          v-if="errorMessage"
+          class="mb-6 p-4 bg-destructive/10 border border-destructive/50 text-destructive rounded-lg"
+        >
+          {{ errorMessage }}
+        </div>
 
         <!-- Load from URL -->
-        <div class="space-y-2 mb-4">
-          <label class="text-sm font-medium leading-none">
+        <div class="mb-6">
+          <label class="block text-base font-medium mb-3">
             {{ t("loader.urlLabel") }}
           </label>
-          <div class="flex gap-2">
+          <div class="flex gap-3">
             <Input
               v-model="typeformUrl"
               :placeholder="t('loader.urlPlaceholder')"
               :disabled="isLoading"
               @keyup.enter="loadFromUrl"
-              class="flex-1"
+              class="flex-1 text-base h-12"
             />
-            <Button @click="loadFromUrl" :disabled="isLoading">
+            <Button @click="loadFromUrl" :disabled="isLoading" size="lg">
               {{ isLoading ? t("loader.loading") : t("loader.loadButton") }}
             </Button>
           </div>
         </div>
 
         <!-- API Token (collapsible) -->
-        <details class="mb-4 group">
-          <summary
-            class="cursor-pointer text-sm font-medium text-muted-foreground hover:text-foreground transition-colors list-none flex items-center gap-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="transition-transform group-open:rotate-90"
-            >
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
+        <details class="mb-6">
+          <summary class="cursor-pointer text-base font-medium text-muted-foreground hover:text-foreground mb-3">
             {{ t("loader.apiTokenSection") }}
           </summary>
-          <div class="mt-3 space-y-2 pl-6">
-            <label class="text-sm text-muted-foreground">
+          <div class="mt-4 pl-4 border-l-2 border-border">
+            <label class="block text-sm text-muted-foreground mb-3">
               {{ t("loader.apiTokenLabel") }}
               <a
-                href="https://www.typeform.com/help/a/create-api-tokens-360035144552/"
+                href="https://help.typeform.com/hc/en-us/articles/13599952215572-Typeform-API-personal-access-token"
                 target="_blank"
                 class="text-primary hover:underline ml-1"
               >
@@ -176,34 +145,35 @@ async function loadFromUrl() {
               v-model="apiToken"
               type="password"
               :placeholder="t('loader.apiTokenPlaceholder')"
+              class="text-base h-12"
             />
           </div>
         </details>
 
         <!-- Separator -->
-        <div class="relative my-6">
+        <div class="relative my-8">
           <div class="absolute inset-0 flex items-center">
             <span class="w-full border-t" />
           </div>
-          <div class="relative flex justify-center text-xs uppercase">
-            <span class="bg-card px-2 text-muted-foreground">
+          <div class="relative flex justify-center text-sm uppercase">
+            <span class="bg-card px-3 text-muted-foreground font-medium">
               {{ t("loader.or") }}
             </span>
           </div>
         </div>
 
         <!-- Upload JSON file -->
-        <div class="space-y-2">
-          <label class="text-sm font-medium leading-none">
+        <div>
+          <label class="block text-base font-medium mb-3">
             {{ t("loader.uploadLabel") }}
           </label>
-          <Input type="file" @change="onFileChange" accept=".json" />
+          <Input type="file" @change="onFileChange" accept=".json" class="text-base h-12" />
         </div>
-      </Card>
+      </div>
 
       <!-- Form Content -->
-      <div class="space-y-4">
-        <h2 class="text-3xl font-bold tracking-tight print:text-2xl">
+      <div class="space-y-5">
+        <h2 class="text-4xl font-bold tracking-tight print:text-2xl">
           {{ data.title }}
         </h2>
         <FormField v-for="field of data.fields" :key="field.ref" :field="field" />
