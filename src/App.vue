@@ -172,8 +172,8 @@ async function loadFromUrl() {
       </div>
 
       <!-- Form Content -->
-      <div class="space-y-5">
-        <h2 class="text-4xl font-bold tracking-tight print:text-2xl">
+      <div class="space-y-6">
+        <h2 class="text-4xl font-bold tracking-tight print:text-2xl mb-2">
           {{ data.title }}
         </h2>
         <FormField v-for="field of data.fields" :key="field.ref" :field="field" />
